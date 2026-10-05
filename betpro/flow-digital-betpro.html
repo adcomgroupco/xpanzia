@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Flow digital de BetPro Honduras en Meta: US$1.000 al mes en tres campañas." />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>BetPro - Flow digital</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../assets/css/adcom.css">
+  <style>
+    /* ---- Graficos y metodologia (extiende el sistema Adcom) ---- */
+    .app-content .head h2{max-width:26ch;font-size:clamp(1.55rem,3vw,2.4rem);line-height:1.12}
+    .ab-kick{margin:0 0 14px;font-size:var(--fs-min);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-fg)}
+    .grupo .figure,.grupo .duo,.grupo .panel,.grupo .tira-cifras,.grupo .ab-wins,.grupo .table-scroll,.grupo .ab-det,.grupo .ab-stages,.grupo .rules{margin-top:var(--s-5)}
+    .grupo .duo .panel,.grupo .duo .figure{margin-top:0}
+    .ab-duo{align-items:start}
+
+    /* figura */
+    .ab-fh{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:14px}
+    .ab-fh h3{margin:0;font-size:1.05rem;font-weight:700;letter-spacing:-.01em}
+    .ab-fh span{font-size:var(--fs-min);font-weight:600;color:var(--fg-muted)}
+    .ab-scroll{overflow-x:auto}
+    .ab-svg{display:block;width:100%;height:auto;min-width:480px}
+    .ab-col{fill:var(--ramp-3)}
+    .ab-col.is-hi{fill:var(--pos)}
+    .ab-val{font:600 12px var(--fuente);fill:var(--fg-secondary)}
+    .ab-val.is-hi{font-weight:800;fill:var(--pos);font-size:13px}
+    .ab-lab{font:500 12px var(--fuente);fill:var(--fg-muted)}
+    .ab-base{stroke:var(--rule-strong);stroke-width:1}
+    .ab-line{fill:none;stroke:var(--fg);stroke-width:2.5;stroke-linejoin:round}
+    .ab-area{fill:var(--ramp-1);opacity:.7}
+    .ab-dot{fill:var(--ground);stroke:var(--fg);stroke-width:2.5}
+    .ab-dot.is-hi{fill:var(--pos);stroke:var(--pos)}
+    .ab-band.b1{fill:var(--sunken)}
+    .ab-band.b2{fill:var(--accent);opacity:.28}
+    .ab-bnum{font:800 13px var(--fuente);fill:var(--fg)}
+
+    /* barras horizontales */
+    .ab-hb{display:grid;gap:14px}
+    .ab-hr{display:grid;grid-template-columns:minmax(120px,210px) 1fr 96px;gap:14px;align-items:center}
+    .ab-hr .n{font-weight:600;font-size:.92rem;line-height:1.25}
+    .ab-hr .n small,.ab-hr .n em{display:block;font-size:var(--fs-min);font-weight:400;font-style:normal;color:var(--fg-muted)}
+    .ab-hr .t{position:relative;height:16px;background:var(--sunken)}
+    .ab-hr .t i{display:block;height:100%;background:var(--ramp-3);transform-origin:left}
+    .ab-hr .t s{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--fg)}
+    .ab-hr b{text-align:right;font-weight:800;font-size:1.05rem;font-variant-numeric:tabular-nums}
+    .ab-hr.is-hi .t i{background:var(--pos)}
+    .ab-hr.is-hi b{color:var(--pos)}
+    .ab-hr.is-mute .t i{background:var(--ramp-2)}
+    .ab-mk{margin:12px 0 0;font-size:var(--fs-body-min);color:var(--fg-muted)}
+
+    /* barra apilada */
+    .ab-stack{display:flex;height:22px;gap:2px;background:var(--ground)}
+    .ab-stack i{display:block;height:100%}
+    .ab-leg{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px 28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+    .ab-leg li{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;font-size:.9rem}
+    .ab-leg li i{width:12px;height:12px;display:block}
+    .ab-leg b{font-weight:800;font-variant-numeric:tabular-nums}
+
+    /* piramide edad y genero */
+    .ab-pyr{display:grid;gap:12px}
+    .ab-pyr .hd,.ab-pyr .pr{display:grid;grid-template-columns:1fr 64px 1fr;gap:14px;align-items:center}
+    .ab-pyr .hd{font-size:var(--fs-min);font-weight:700;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.06em}
+    .ab-pyr .hd span:first-child{text-align:right}
+    .ab-pyr .hd span:nth-child(2){text-align:center}
+    .ab-pyr .age{text-align:center;font-weight:800;font-size:.95rem}
+    .ab-pyr .l,.ab-pyr .r{display:grid;grid-template-columns:1fr;gap:3px}
+    .ab-pyr .l b,.ab-pyr .r b{font-size:1rem;font-weight:800;font-variant-numeric:tabular-nums}
+    .ab-pyr .l b,.ab-pyr .l small{text-align:right}
+    .ab-pyr small{font-size:var(--fs-min);color:var(--fg-muted)}
+    .ab-pyr small.is-good{color:var(--pos);font-weight:700}
+    .ab-pyr .t{display:flex;height:14px;background:var(--sunken)}
+    .ab-pyr .l .t{justify-content:flex-end}
+    .ab-pyr .t i{display:block;height:100%;transform-origin:center}
+    .ab-pyr .l .t i{transform-origin:right}
+    .ab-pyr .r .t i{transform-origin:left}
+    .ab-pyr i.m{background:var(--serie-1)}
+    .ab-pyr i.w{background:var(--serie-2)}
+
+    /* provincias */
+    .ab-pv{display:grid;gap:14px}
+    .ab-pv .lg{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:var(--fs-min);color:var(--fg-muted);font-weight:600}
+    .ab-pv .lg i{display:inline-block;width:12px;height:12px;margin-right:8px;vertical-align:-1px}
+    .ab-pv i.g{background:var(--ramp-3)}
+    .ab-pv i.p{background:var(--serie-1)}
+    .ab-pv .pv{display:grid;grid-template-columns:minmax(84px,120px) 1fr;gap:14px;align-items:center}
+    .ab-pv .n{font-weight:600;font-size:.92rem}
+    .ab-pv .bb{display:grid;gap:4px}
+    .ab-pv .bb div{display:grid;grid-template-columns:1fr 64px;gap:12px;align-items:center}
+    .ab-pv .t{display:block;height:11px;background:var(--sunken)}
+    .ab-pv .t i{display:block;height:100%;transform-origin:left}
+    .ab-pv b{text-align:right;font-size:.82rem;font-weight:700;font-variant-numeric:tabular-nums}
+    .ab-pv .pv.is-up .n{color:var(--pos);font-weight:800}
+    .ab-pv .pv.is-up .bb div:last-child b{color:var(--pos);font-weight:800}
+    .ab-pv .pv.is-up i.p{background:var(--pos)}
+
+    /* animacion: el dato se dibuja al entrar (usa .grow / .is-in del sistema) */
+    @media (prefers-reduced-motion:no-preference){
+      .grow .ab-col{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .8s var(--ease);transition-delay:calc(var(--i,0)*55ms)}
+      .grow.is-in .ab-col{transform:scaleY(1)}
+      .grow .ab-hr .t i,.grow .ab-pyr .t i,.grow .ab-pv .t i{transform:scaleX(0);transition:transform .85s var(--ease)}
+      .grow.is-in .ab-hr .t i,.grow.is-in .ab-pyr .t i,.grow.is-in .ab-pv .t i{transform:scaleX(1)}
+    }
+
+    /* resumen */
+    .ab-wins{display:grid;gap:var(--s-4);grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+    .ab-win{padding:20px;background:var(--raised);border:1px solid var(--rule);border-left:4px solid var(--pos);border-radius:var(--radius)}
+    .ab-win h3{margin:12px 0 6px;font-size:1.05rem;line-height:1.25}
+    .ab-win p{margin:0;font-size:.88rem;color:var(--fg-secondary)}
+    .ab-chip{display:inline-block;padding:3px 10px;border-radius:var(--radius-sm);background:var(--accent);color:var(--accent-ink);font-size:var(--fs-min);font-weight:700}
+
+    /* metodologia */
+    .ab-sub{margin:var(--s-6) 0 var(--s-3);font-size:1.4rem}
+    .ab-sub:first-of-type{margin-top:var(--s-5)}
+    .ab-subp{margin:0 0 var(--s-4);max-width:var(--measure);color:var(--fg-secondary)}
+    .ab-flow{display:grid;gap:var(--s-4);grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));counter-reset:none}
+    .ab-step{position:relative;padding:22px 20px 20px;background:var(--raised);border:1px solid var(--rule);border-top:4px solid var(--fg);border-radius:var(--radius);display:flex;flex-direction:column;gap:10px}
+    .ab-step:nth-child(1){border-top-color:var(--serie-1)}
+    .ab-step:nth-child(2){border-top-color:var(--serie-2)}
+    .ab-step:nth-child(3){border-top-color:var(--ramp-4)}
+    .ab-step:nth-child(4){border-top-color:var(--ramp-3)}
+    .ab-step h4{margin:0;font-size:1.1rem}
+    .ab-step p{margin:0;font-size:.9rem;color:var(--fg-secondary);flex:1}
+    .ab-step small{font-size:var(--fs-body-min);color:var(--fg-muted)}
+    .ab-step small b{color:var(--fg)}
+    .ab-num{position:absolute;top:18px;right:18px;font-size:1.6rem;font-weight:800;color:var(--ramp-2);line-height:1}
+    .ab-step .ab-chip{align-self:flex-start;background:var(--sunken);color:var(--fg)}
+    .ab-meter{height:8px;background:var(--sunken)}
+    .ab-meter i{display:block;height:100%;min-width:3px;background:var(--fg)}
+    .ab-lens{display:grid;gap:var(--s-4);grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+    .ab-l .ab-chip{align-self:flex-start}
+    .ab-l{padding:22px 20px;border:1px solid var(--rule);border-radius:var(--radius);background:var(--raised);display:flex;flex-direction:column;gap:12px}
+    .ab-l h4{margin:0;font-size:1.1rem}
+    .ab-l dl{margin:0;display:grid;gap:4px}
+    .ab-l dt{font-size:var(--fs-min);font-weight:700;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.05em;margin-top:6px}
+    .ab-l dd{margin:0;font-size:.9rem;color:var(--fg-secondary)}
+    .ab-find{margin:0;padding:10px 12px;background:rgba(22,105,58,.09);border-radius:var(--radius-sm);font-size:.88rem;color:var(--fg)}
+    .ab-find b{color:var(--pos)}
+    .ab-l a{margin-top:auto;font-size:.86rem;font-weight:700;color:var(--fg)}
+    .ab-prin{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:p;border-top:2px solid var(--rule-strong)}
+    .ab-prin li{counter-increment:p;display:grid;grid-template-columns:56px 1fr;gap:4px 12px;padding:18px 0;border-bottom:1px solid var(--rule)}
+    .ab-prin li::before{content:counter(p);grid-row:span 2;font-size:1.8rem;font-weight:800;color:var(--accent-fg);line-height:1}
+    .ab-prin b{font-size:1.05rem}
+    .ab-prin span{color:var(--fg-secondary);font-size:.95rem;max-width:var(--measure)}
+
+    /* etapas */
+    .ab-stages{list-style:none;padding:0;display:grid;gap:var(--s-4);grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+    .ab-stages li{position:relative;padding:18px 18px 18px 54px;background:var(--raised);border:1px solid var(--rule);border-radius:var(--radius)}
+    .ab-stages .ab-num{left:16px;right:auto;top:16px;font-size:1.5rem;color:var(--accent-fg)}
+    .ab-stages b{display:block;font-size:.98rem;line-height:1.25}
+    .ab-stages em{display:block;font-style:normal;font-size:var(--fs-min);color:var(--fg-muted);margin:2px 0 8px}
+    .ab-stages p{margin:0;font-size:.88rem;color:var(--fg-secondary)}
+
+    /* detalle desplegable */
+    .ab-det{border-top:1px solid var(--rule);padding-top:14px}
+    .ab-det summary{cursor:pointer;font-weight:700;font-size:.92rem;list-style:none;display:inline-flex;align-items:center;gap:8px}
+    .ab-det summary::-webkit-details-marker{display:none}
+    .ab-det summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:800}
+    .ab-det[open] summary::before{content:"\2212"}
+    .ab-det .table-scroll{margin-top:var(--s-4)}
+    .ab-note{margin:12px 0 0;font-size:var(--fs-body-min);color:var(--fg-muted)}
+    .ab-mt td:nth-child(3){color:var(--pos);font-weight:600}
+    .ab-mt thead th + th{text-align:left}
+    .ab-mt td{text-align:left}
+
+    @media (max-width:640px){
+      .ab-hr{grid-template-columns:1fr 90px;grid-template-areas:"n b" "t t"}
+      .ab-hr .n{grid-area:n}.ab-hr b{grid-area:b}.ab-hr .t{grid-area:t}
+      .ab-pyr .hd,.ab-pyr .pr{grid-template-columns:1fr 48px 1fr;gap:8px}
+      .ab-prin li{grid-template-columns:40px 1fr}
+    }
+
+  
+    /* diagnostico BetPro */
+    .ab-hr.is-neg .t i{background:var(--neg)}
+    .ab-hr.is-neg b{color:var(--neg)}
+    .ab-na{color:var(--fg-muted);font-weight:400}
+    .bp-vs{display:grid;gap:var(--s-4);grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));margin-top:var(--s-5)}
+    .bp-hl th{vertical-align:top}
+    .bp-hl td{text-align:left;vertical-align:top}
+    .ab-mt.ab-plain td:nth-child(3){color:inherit;font-weight:400}
+    .ab-mt.ab-plain td{text-align:right}
+    .ab-mt.ab-plain thead th + th{text-align:right}
+  
+    .bp-ads{display:grid;gap:var(--s-4);grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));margin-bottom:var(--s-5)}
+    .bp-ad{display:flex;flex-direction:column;background:var(--raised);border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
+    .bp-ad img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;background:var(--sunken)}
+    .bp-adb{padding:16px;display:grid;gap:10px;align-content:start}
+    .bp-adb h4{margin:0;font-size:.98rem;line-height:1.25}
+    .bp-adb dl{margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .bp-adb dt{font-size:var(--fs-min);color:var(--fg-muted);font-weight:600}
+    .bp-adb dd{margin:2px 0 0;font-weight:800;font-size:.9rem;font-variant-numeric:tabular-nums}
+    .bp-adb p{margin:0;font-size:.88rem;color:var(--fg-secondary)}
+  </style>
+  <script defer src="../assets/js/adcom.js"></script>
+</head>
+<body class="con-shell">
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+  <nav class="app-sidebar">
+    <div class="app-sidebar-top">
+      <a class="app-sidebar-brand" href="../index.html"><i></i>Adcom</a>
+      <div class="app-sidebar-client">
+        <span class="app-sidebar-client-label">Cliente</span>
+        <strong class="app-sidebar-client-name">BetPro Honduras</strong>
+        <span class="app-sidebar-client-period">Flow mensual, Meta</span>
+      </div>
+    </div>
+    <div class="app-sidebar-nav">
+      <span class="app-sidebar-nav-title">Contenido</span>
+      <a href="#resumen"><b></b>Resumen<small>01</small></a><a href="#campanas"><b></b>Tres campañas<small>02</small></a><a href="#reparto"><b></b>Reparto<small>03</small></a><a href="#resultados"><b></b>Resultados esperados<small>04</small></a><a href="#flow"><b></b>Flow del mes<small>05</small></a><a href="#decision"><b></b>Cómo se decide<small>06</small></a>
+    </div>
+    <div class="app-sidebar-foot">Uso interno, no compartir sin autorización</div>
+  </nav>
+  <div class="app-main">
+    <div class="app-topbar"><span class="app-topbar-crumb">Flow digital</span><span class="app-topbar-section">Meta Ads</span></div>
+    <main class="app-content wrap" id="contenido">
+      <header class="opening">
+        <h1>Flow digital: <em>US$1.000 al mes</em> en Meta</h1>
+        <p class="lede">Tres campañas con un trabajo claro cada una: registrar, llevar al depósito y recuperar a quienes se registraron y no depositaron.</p>
+        <div class="opening-meta"><div><b>US$1.000 al mes</b><span>Inversión</span></div><div><b>Solo Meta</b><span>Canal</span></div><div><b>3 campañas</b><span>Estructura</span></div><div><b>Propuesta a validar</b><span>Estado</span></div></div>
+      </header>
+      <hr class="divider">
+
+      <section class="grupo" id="resumen"><div class="head"><p class="ab-kick">01 · Resumen</p><h2>Se invierte en registro; el depósito se mide antes de prometerlo</h2><p class="lede">El grueso del presupuesto va a conseguir registros. Para el depósito no proyectamos resultados porque hoy no hay datos confiables.</p></div>
+<dl class="tira-cifras"><div><dt>Inversión mensual</dt><dd>US$&nbsp;1.000<small>Solo <b>Meta Ads</b></small></dd></div><div><dt>Peso del registro</dt><dd>60&nbsp;%<small><b>US$&nbsp;600</b> al mes</small></dd></div><div><dt>Registros esperados</dt><dd>200 a 300<small>Con un CPA de <b>US$&nbsp;2 a 3</b></small></dd></div><div><dt>Depósitos esperados</dt><dd>Sin dato<small>No hay base para <b>proyectarlos</b></small></dd></div></dl>
+</section>
+
+<section class="grupo" id="campanas"><div class="head"><p class="ab-kick">02 · Tres campañas</p><h2>Cada campaña hace un trabajo distinto</h2><p class="lede">Todas en Meta, permanentes (no una nueva cada mes).</p></div>
+<div class="ab-flow">
+  <div class="ab-step"><span class="ab-num">1</span><span class="ab-chip">Registrar</span><h4>Registro</h4><p>Público amplio, sin quienes ya se registraron. Creativos con una persona real y una promesa concreta, como retirar en 30 minutos.</p><div class="ab-meter"><i style="width:60%"></i></div><small><b>US$&nbsp;600</b> · 60&nbsp;% · se optimiza a registro completo</small></div>
+  <div class="ab-step"><span class="ab-num">2</span><span class="ab-chip">Depositar</span><h4>Depósito</h4><p>Público nuevo con intención de jugar. Mensaje de bono o regalo explícito, que fue lo que más bajó la compra.</p><div class="ab-meter"><i style="width:25%"></i></div><small><b>US$&nbsp;250</b> · 25&nbsp;% · se optimiza a primer depósito</small></div>
+  <div class="ab-step"><span class="ab-num">3</span><span class="ab-chip">Recuperar</span><h4>Remarketing a depósito</h4><p>Registrados sin depósito y visitantes de los últimos 30 días. Bono de primera recarga, con límite de frecuencia.</p><div class="ab-meter"><i style="width:15%"></i></div><small><b>US$&nbsp;150</b> · 15&nbsp;% · se optimiza a primer depósito</small></div>
+</div></section>
+
+<section class="grupo" id="reparto"><div class="head"><p class="ab-kick">03 · Reparto</p><h2>60 % registro, 25 % depósito, 15 % remarketing</h2><p class="lede">Es un punto de partida: el registro lleva el mayor esfuerzo, como se pidió. El remarketing es chico porque sus audiencias hay que reconstruirlas.</p></div>
+<figure class="figure ab-fig"><div class="ab-fh"><h3>Reparto del presupuesto mensual</h3><span>US$&nbsp;1.000</span></div><div class="ab-stack"><i style="width:60%;background:var(--serie-1)" title="Registro"></i><i style="width:25%;background:var(--serie-2)" title="Depósito"></i><i style="width:15%;background:var(--ramp-4)" title="Remarketing a depósito"></i></div><ul class="ab-leg"><li><i style="background:var(--serie-1)"></i><span>Registro</span><b>US$&nbsp;600 · 60&nbsp;%</b></li><li><i style="background:var(--serie-2)"></i><span>Depósito</span><b>US$&nbsp;250 · 25&nbsp;%</b></li><li><i style="background:var(--ramp-4)"></i><span>Remarketing a depósito</span><b>US$&nbsp;150 · 15&nbsp;%</b></li></ul></figure>
+<div class="table-scroll"><table class="ab-mt"><thead><tr><th scope="col">Campaña</th><th scope="col">Evento de optimización</th><th scope="col">Público</th><th scope="col">KPI</th></tr></thead><tbody>
+<tr><th scope="row">Registro</th><td>Registro completo</td><td>Amplio, excluyendo registrados y depositantes</td><td>Costo por registro</td></tr>
+<tr><th scope="row">Depósito</th><td>Primer depósito (FTD)</td><td>Amplio y similares de depositantes cuando estén listos</td><td>Costo por primer depósito</td></tr>
+<tr><th scope="row">Remarketing a depósito</th><td>Primer depósito (FTD)</td><td>Registrados sin depósito y visitantes de 30 días</td><td>Costo por primer depósito</td></tr>
+</tbody></table></div></section>
+
+<section class="grupo" id="resultados"><div class="head"><p class="ab-kick">04 · Resultados esperados</p><h2>De 200 a 300 registros al mes</h2><p class="lede">Estimación con un CPA de US$&nbsp;2 a 3 por registro, que es un supuesto del equipo.</p></div>
+<figure class="figure grow ab-fig"><div class="ab-fh"><h3>Registros al mes con US$&nbsp;600</h3><span>Según el costo por registro</span></div><div class="ab-hb"><div class="ab-hr"><div class="n">Optimista<small>US$&nbsp;2,0 por registro</small></div><div class="t"><i style="width:100.0%"></i></div><b>300</b></div><div class="ab-hr is-hi"><div class="n">Medio<small>US$&nbsp;2,5 por registro</small></div><div class="t"><i style="width:80.0%"></i></div><b>240</b></div><div class="ab-hr"><div class="n">Prudente<small>US$&nbsp;3,0 por registro</small></div><div class="t"><i style="width:66.7%"></i></div><b>200</b></div></div><figcaption>Cuentas simples: presupuesto de registro dividido entre el CPA.</figcaption></figure>
+<div class="panel panel-hi"><h3>Depósitos: no los proyectamos</h3><p>Hoy no hay datos para estimar el costo de un depósito. El registro no se mide desde abril, no existe un evento de primer depósito con valor y Purchase no se ha cruzado con depósitos reales. Fijamos la meta de depósito con el primer mes de datos limpios.</p></div>
+</section>
+
+<section class="grupo" id="flow"><div class="head"><p class="ab-kick">05 · Flow del mes</p><h2>Primero medir, luego encender</h2><p class="lede">Orden en que arrancan las campañas.</p></div>
+<ol class="ab-stages">
+<li><span class="ab-num">1</span><div><b>Medición</b><em>Antes de invertir fuerte</em><p>Restablecer el registro y crear el primer depósito con valor en el pixel.</p></div></li>
+<li><span class="ab-num">2</span><div><b>Registro</b><em>Primeras semanas</em><p>Se enciende la campaña de registro, que es la que ya tiene señal de medición.</p></div></li>
+<li><span class="ab-num">3</span><div><b>Depósito y remarketing</b><em>Con el evento de depósito listo</em><p>Se suman cuando el pixel mide el primer depósito y hay audiencias de tamaño usable.</p></div></li>
+<li><span class="ab-num">4</span><div><b>Lectura mensual</b><em>Cierre de cada mes</em><p>Se revisa el costo por registro y por depósito, y se ajusta el reparto.</p></div></li>
+</ol></section>
+
+<section class="grupo" id="decision"><div class="head"><p class="ab-kick">06 · Cómo se decide</p><h2>Primero aprender, luego mover el presupuesto</h2><p class="lede">Reglas simples para el primer trimestre.</p></div>
+<div class="duo">
+<div class="panel panel-hi"><h3>Mover hasta 15 % al mes</h3><p>La reasignación mensual se limita a un 15&nbsp;% del presupuesto, para no reiniciar el aprendizaje de las campañas. Es una propuesta.</p></div>
+<div class="panel"><h3>Fijar la meta de depósito</h3><p>Con un mes de datos limpios se define el costo objetivo por primer depósito y se decide si el reparto 60/25/15 se mantiene.</p></div>
+</div>
+<p class="ab-note">La cuenta de Meta factura en lempiras. La tasa de conversión del presupuesto en dólares se confirma al cargarlo.</p></section>
+    </main>
+    <footer class="footer"><span>BetPro Honduras, flow digital</span><span>Juega con responsabilidad, +18</span></footer>
+  </div>
+</body>
+</html>
